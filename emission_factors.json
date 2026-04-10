@@ -1,0 +1,16 @@
+{
+  "travel": {
+    "car_kg_per_km": 0.192
+  },
+  "electricity": {
+    "kg_per_kwh": 0.82
+  },
+  "lpg": {
+    "kg_co2_per_kg_lpg": 3.0
+  },
+  "diet": {
+    "veg_kg_per_day": 1.5,
+    "non_veg_kg_per_day": 3.7,
+    "mixed_kg_per_day": 2.5
+  }
+}

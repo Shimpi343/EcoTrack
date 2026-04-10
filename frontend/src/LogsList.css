@@ -1,0 +1,126 @@
+/* =============================================
+   ECOTRACK — LOGS LIST
+   Matches Dashboard dark theme
+   ============================================= */
+ 
+.logs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  max-height: 100%;
+  padding-right: 2px;
+}
+ 
+/* scrollbar */
+.logs-container::-webkit-scrollbar       { width: 4px; }
+.logs-container::-webkit-scrollbar-track { background: transparent; }
+.logs-container::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+}
+ 
+/* ── SINGLE LOG ITEM ── */
+.log-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1a1e26;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 12px 14px;
+  transition: border-color 0.2s ease;
+  min-height: 64px;
+}
+ 
+.log-item:hover {
+  border-color: rgba(212,168,39,0.25);
+}
+ 
+/* ── LEFT SIDE ── */
+.log-item-left {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  min-width: 0;
+}
+ 
+.log-date {
+  font-family: 'Sora', 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #eef1f6;
+  white-space: nowrap;
+}
+ 
+.log-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+ 
+.log-details span {
+  font-size: 11px;
+  font-weight: 500;
+  color: #8b93a6;
+  background: rgba(255,255,255,0.05);
+  padding: 2px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+ 
+/* ── CO2 VALUE (right side) ── */
+.log-co2 {
+  font-family: 'Sora', 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-left: 12px;
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+}
+ 
+.log-co2 span {
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.6;
+}
+ 
+/* color coding */
+.log-co2.good { color: #39ff7e; }
+.log-co2.mid  { color: #fbbf24; }
+.log-co2.bad  { color: #f87171; }
+ 
+/* ── EMPTY STATE ── */
+.logs-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  gap: 10px;
+  text-align: center;
+}
+ 
+.logs-empty-icon {
+  font-size: 32px;
+}
+ 
+.logs-empty p {
+  font-size: 13px;
+  color: #4e5668;
+  margin: 0;
+  line-height: 1.5;
+}
+ 
+/* ── LOADING STATE ── */
+.logs-loading {
+  padding: 24px;
+  text-align: center;
+  font-size: 13px;
+  color: #4e5668;
+}
+ 

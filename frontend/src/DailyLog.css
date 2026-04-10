@@ -1,0 +1,417 @@
+/* =============================================
+   ECOTRACK — DAILY LOG MODAL
+   Theme: Dark glass · Charcoal + Neon Green
+   Font: Sora + DM Sans
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ── OVERLAY ── */
+.dailylog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 8, 14, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 16px;
+  animation: overlayIn 0.25s ease both;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── MAIN CARD ── */
+.dailylog-card {
+  width: 460px;
+  max-width: 100%;
+  max-height: 92vh;
+  background: #13161b;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 28px;
+  padding: 28px 26px 22px;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 0 0 1px rgba(57,255,126,0.04),
+    0 32px 72px rgba(0, 0, 0, 0.65),
+    0 0 80px rgba(57, 255, 126, 0.05);
+  animation: cardIn 0.38s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  position: relative;
+  overflow: hidden;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* top neon shimmer */
+.dailylog-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 8%; right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #39ff7e, transparent);
+  opacity: 0.45;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(28px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── HEADER ── */
+.dailylog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.dailylog-header h2 {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #eef1f6;
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.voice-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: linear-gradient(135deg, #0d2e1a, #1a4d2e);
+  border: 1px solid rgba(57,255,126,0.22);
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 0 12px rgba(57,255,126,0.10);
+}
+
+.voice-btn:hover {
+  box-shadow: 0 0 20px rgba(57,255,126,0.28);
+  transform: scale(1.08);
+}
+
+.close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.05);
+  color: #8b93a6;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.25s;
+}
+
+.close-btn:hover {
+  background: rgba(239,68,68,0.18);
+  border-color: rgba(239,68,68,0.3);
+  color: #f87171;
+  transform: rotate(90deg);
+}
+
+/* ── STEP TABS ── */
+.step-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+  background: #1a1e26;
+  border-radius: 16px;
+  padding: 5px;
+}
+
+.step-tab {
+  flex: 1;
+  text-align: center;
+  padding: 9px 6px;
+  border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4e5668;
+  letter-spacing: 0.3px;
+  transition: background 0.22s, color 0.22s, box-shadow 0.22s;
+  user-select: none;
+}
+
+.step-tab:hover {
+  color: #8b93a6;
+}
+
+.step-tab.active {
+  background: #39ff7e;
+  color: #060f09;
+  box-shadow: 0 0 14px rgba(57,255,126,0.35);
+  font-weight: 700;
+}
+
+/* ── STEP BODY ── */
+.step-body {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.step-body::-webkit-scrollbar { width: 4px; }
+.step-body::-webkit-scrollbar-track { background: transparent; }
+.step-body::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+}
+
+/* ── STEP ANIMATION ── */
+.step-animate {
+  animation: slideFade 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes slideFade {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION TITLE ── */
+.section-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #8b93a6;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 0 0 12px;
+}
+
+/* ── LABELS ── */
+.step-body label,
+.step-animate > label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: #4e5668;
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 14px;
+}
+
+.step-animate > label:first-child { margin-top: 0; }
+
+/* ── RANGE SLIDER ── */
+input[type="range"] {
+  width: 100%;
+  accent-color: #39ff7e;
+  height: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+
+/* ── CHIPS ── */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chip {
+  padding: 9px 16px;
+  border-radius: 100px;
+  background: #1e222c;
+  border: 1.5px solid rgba(255,255,255,0.07);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: #8b93a6;
+  transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+  user-select: none;
+}
+
+.chip:hover {
+  border-color: rgba(57,255,126,0.3);
+  color: #c8ffd8;
+  transform: translateY(-1px);
+}
+
+.chip.active {
+  background: rgba(57,255,126,0.12);
+  border-color: rgba(57,255,126,0.45);
+  color: #39ff7e;
+  font-weight: 700;
+}
+
+.chip.large {
+  padding: 11px 20px;
+  font-size: 14px;
+}
+
+/* ── SLIDER GRID (Electricity) ── */
+.slider-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.slider-mini {
+  background: #1a1e26;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 14px 12px;
+  border-radius: 16px;
+  transition: border-color 0.2s;
+}
+
+.slider-mini:hover {
+  border-color: rgba(57,255,126,0.18);
+}
+
+.slider-mini label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #4e5668;
+  display: block;
+  margin: 0 0 8px;
+}
+
+.slider-mini b {
+  color: #39ff7e;
+  font-weight: 700;
+}
+
+/* ── FUEL SECTION ── */
+.fuel-section {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.fuel-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: #4e5668;
+  margin-bottom: 10px;
+}
+
+.fuel-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.fuel-btn {
+  padding: 11px 10px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(255,255,255,0.07);
+  background: #1e222c;
+  color: #8b93a6;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.fuel-btn:hover {
+  border-color: rgba(57,255,126,0.25);
+  color: #c8ffd8;
+  transform: translateY(-1px);
+}
+
+.fuel-btn.active {
+  background: rgba(57,255,126,0.12);
+  border-color: rgba(57,255,126,0.45);
+  color: #39ff7e;
+  font-weight: 700;
+}
+
+/* ── FOOTER ── */
+.dailylog-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.dailylog-footer span {
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: #39ff7e;
+  text-shadow: 0 0 14px rgba(57,255,126,0.4);
+  letter-spacing: -0.3px;
+}
+
+.dailylog-footer button {
+  padding: 11px 24px;
+  border-radius: 14px;
+  border: none;
+  background: #39ff7e;
+  color: #060f09;
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  transition: background 0.22s, transform 0.22s, box-shadow 0.22s;
+  box-shadow:
+    0 0 18px rgba(57,255,126,0.35),
+    0 4px 14px rgba(57,255,126,0.20);
+}
+
+.dailylog-footer button:hover {
+  background: #4dff90;
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 30px rgba(57,255,126,0.55),
+    0 8px 22px rgba(57,255,126,0.30);
+}
+
+.dailylog-footer button:active {
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 500px) {
+  .dailylog-card {
+    padding: 22px 18px 18px;
+    border-radius: 22px;
+  }
+
+  .slider-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fuel-options {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .chip.large {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}

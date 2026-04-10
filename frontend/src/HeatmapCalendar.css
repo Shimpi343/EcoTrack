@@ -1,0 +1,220 @@
+/* =============================================
+   ECOTRACK — HEATMAP CALENDAR CSS
+   ============================================= */
+ 
+.heatmap-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-family: 'DM Sans', sans-serif;
+  position: relative;
+}
+ 
+.heatmap-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+ 
+.hm-stat {
+  background: #1a1e26;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+ 
+.hm-stat-value {
+  font-family: 'Sora', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #eef1f6;
+  letter-spacing: -0.3px;
+}
+ 
+.hm-stat-value.good { color: #39ff7e; }
+ 
+.hm-stat-label {
+  font-size: 11px;
+  color: #4e5668;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+ 
+.heatmap-scroll {
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+ 
+.heatmap-scroll::-webkit-scrollbar       { height: 4px; }
+.heatmap-scroll::-webkit-scrollbar-track { background: transparent; }
+.heatmap-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+}
+ 
+.heatmap-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: max-content;
+}
+ 
+.heatmap-months {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+ 
+.heatmap-month-cell {
+  width: 14px;
+  font-size: 10px;
+  color: #4e5668;
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+}
+ 
+.heatmap-row {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+ 
+.heatmap-day-label {
+  width: 28px;
+  font-size: 10px;
+  color: #4e5668;
+  font-weight: 500;
+  text-align: right;
+  padding-right: 6px;
+  flex-shrink: 0;
+}
+ 
+.heatmap-day-col {
+  width: 28px;
+  flex-shrink: 0;
+}
+ 
+.heatmap-cell {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+  cursor: pointer;
+}
+ 
+.heatmap-cell:hover {
+  transform: scale(1.4);
+  opacity: 0.9;
+}
+ 
+.heatmap-cell.empty  { background: #1a1e26; border: 1px solid rgba(255,255,255,0.06); }
+.heatmap-cell.zero   { background: #1a1e26; border: 1px solid rgba(255,255,255,0.06); }
+.heatmap-cell.level1 { background: #0d4a28; }
+.heatmap-cell.level2 { background: #1a8c48; }
+.heatmap-cell.level3 { background: #d4a827; }
+.heatmap-cell.level4 { background: #e05c2a; }
+.heatmap-cell.level5 { background: #c0392b; }
+ 
+.heatmap-cell.today {
+  outline: 2px solid #eef1f6;
+  outline-offset: 1px;
+}
+ 
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+ 
+.heatmap-legend .heatmap-cell { cursor: default; }
+.heatmap-legend .heatmap-cell:hover { transform: none; }
+ 
+.heatmap-legend-label {
+  font-size: 11px;
+  color: #4e5668;
+  font-weight: 500;
+  margin: 0 4px;
+}
+ 
+.heatmap-legend-key {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 16px;
+  flex-wrap: wrap;
+}
+ 
+.heatmap-legend-key span {
+  font-size: 11px;
+  color: #8b93a6;
+  margin-right: 6px;
+}
+ 
+.heatmap-tooltip {
+  position: fixed;
+  transform: translateX(-50%) translateY(-100%);
+  background: #0c0e11;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 10px 14px;
+  pointer-events: none;
+  z-index: 9999;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+ 
+.heatmap-tooltip-date {
+  font-size: 12px;
+  font-weight: 600;
+  color: #8b93a6;
+  margin-bottom: 4px;
+}
+ 
+.heatmap-tooltip-val {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: #eef1f6;
+}
+ 
+.heatmap-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px;
+  color: #4e5668;
+  font-size: 13px;
+}
+ 
+.heatmap-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.08);
+  border-top-color: #39ff7e;
+  border-radius: 50%;
+  animation: hmSpin 0.8s linear infinite;
+}
+ 
+@keyframes hmSpin {
+  to { transform: rotate(360deg); }
+}
+ 
+@media (max-width: 900px) {
+  .heatmap-stats { grid-template-columns: repeat(2, 1fr); }
+}
+ 
+@media (max-width: 500px) {
+  .heatmap-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .hm-stat-value { font-size: 16px; }
+}
+ 
